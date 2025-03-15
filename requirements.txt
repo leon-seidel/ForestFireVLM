@@ -1,0 +1,10 @@
+# Core dependencies
+numpy>=1.20.0
+pillow>=10.4.0
+tqdm
+scikit-learn>=1.6.0
+datasets>=3.2.0
+
+# API clients
+openai
+google-genai

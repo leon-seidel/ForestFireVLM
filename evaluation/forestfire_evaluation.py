@@ -4,7 +4,7 @@ import json
 import csv
 from tqdm import tqdm
 from sklearn.metrics import confusion_matrix
-from ..templates.answer_schema import smoke_detection_schema
+from templates.answer_schema import smoke_detection_schema
 
 def eval_structured_data(predictions_text, ground_truth_dicts, vlm_name, dataset_name, 
                          write_to_file=True, results_folder='benchmarks', confusion_keys=[]):
