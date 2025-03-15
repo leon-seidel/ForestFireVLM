@@ -11,13 +11,12 @@ This code accompanies a research paper currently under peer review with MDPI. Th
 **Links:**
 - Paper: [Link to be added upon publication]
 - Models and Dataset Collection: [HuggingFace](https://huggingface.co/collections/leon-se/forestfirevlm-67d3429a77d9a5fc6c7ce9f5)
-- Models: [Link to be added upon publication]
 
 ## Setup
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/ForestFireVLM.git
+git clone https://github.com/leon-se/ForestFireVLM
 cd ForestFireVLM
 
 # Install dependencies
@@ -37,7 +36,7 @@ The main evaluation script `run_eval.py` supports multiple VLM backends and eval
 #### Using OpenAI Models
 
 ```bash
-python evaluation/run_eval.py \
+python run_eval.py \
   --backend openai \
   --model_name gpt-4o \
   --dataset_name leon-se/forestfire_vlm_v6_eval \
@@ -47,7 +46,7 @@ python evaluation/run_eval.py \
 #### Using Google Models (Gemini)
 
 ```bash
-python evaluation/run_eval.py \
+python run_eval.py \
   --backend google \
   --model_name gemini-2.0-flash-lite \
   --dataset_name leon-se/forestfire_vlm_v6_eval \
@@ -57,11 +56,35 @@ python evaluation/run_eval.py \
 #### Using Self-hosted Models via vLLM
 
 ```bash
-python evaluation/run_eval.py \
+python run_eval.py \
   --backend vllm_online \
   --vllm_url http://localhost:8000/v1 \
   --dataset_name leon-se/forestfire_vlm_v6_eval \
   --results_folder benchmarks/llava
+```
+
+### Analyzing Single Images
+
+For quick analysis of individual images, use `run_single_image.py`:
+
+```bash
+# Analyze a local image file
+python run_single_image.py \
+  --backend openai \
+  --model_name gpt-4o \
+  --image path/to/your/image.jpg
+
+# Analyze an image from a URL
+python run_single_image.py \
+  --backend google \
+  --model_name gemini-2.0-flash-lite \
+  --image https://example.com/forest_fire_image.jpg
+
+# Using a self-hosted model
+python run_single_image.py \
+  --backend vllm_online \
+  --vllm_url http://localhost:8000/v1 \
+  --image path/to/your/image.jpg
 ```
 
 ### Command Line Arguments
@@ -74,6 +97,7 @@ python evaluation/run_eval.py \
 | `--dataset_name` | Dataset name on HuggingFace | "leon-se/forestfire_vlm_v6_eval" |
 | `--ds_split` | Dataset split | "train" |
 | `--results_folder` | Folder to save results | "benchmarks" |
+| `--image` | Path to local image or image URL (for run_single_image.py) | None |
 
 
 ## Evaluation Output

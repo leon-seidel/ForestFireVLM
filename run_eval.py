@@ -1,17 +1,17 @@
 import argparse
 from datasets import load_dataset
-from forestfire_evaluation import create_predictions, eval_structured_data
+from evaluation.forestfire_evaluation import create_predictions, eval_structured_data
 
 
 def setup_vlm(args):
     if args.backend == "google":
-        from google_api import GoogleAPI
+        from evaluation.google_api import GoogleAPI
         vlm = GoogleAPI(model_name=args.model_name)
     elif args.backend == "openai":
-        from openai_api import OpenAIAPI
+        from evaluation.openai_api import OpenAIAPI
         vlm = OpenAIAPI(base_url=None, model_name=args.model_name)
     elif args.backend == "vllm_online":
-        from openai_api import OpenAIAPI
+        from evaluation.openai_api import OpenAIAPI
         vlm = OpenAIAPI(base_url=args.vllm_url, model_name=None)
     else:
         raise ValueError("Invalid backend")
@@ -23,7 +23,7 @@ def main():
     parser = argparse.ArgumentParser(description='Evaluate a VLM model on a structured dataset')
     parser.add_argument('--backend', type=str, help='VLM backend', default="vllm_online")
     parser.add_argument('--vllm_url', type=str, help='URL for vLLM', default="http://localhost:8000/v1")
-    parser.add_argument('--model_name', type=str, help='VLM model name', default="gemini-2.0-flash-lite")
+    parser.add_argument('--model_name', type=str, help='VLM model name', default="")
     parser.add_argument('--dataset_name', type=str, help='Dataset name', default="leon-se/forestfire_vlm_v6_eval")
     parser.add_argument('--ds_split', type=str, help='Dataset split', default="train")
     parser.add_argument('--results_folder', type=str, help='Folder to save results', default="benchmarks")
