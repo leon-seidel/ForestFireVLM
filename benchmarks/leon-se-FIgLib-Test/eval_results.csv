@@ -1,0 +1,8 @@
+model,forest_fire_smoke_visible,overall_score,structured_output_correct_ratio,confusion_forest_fire_smoke_visible
+gemini-2.0-flash,0.7412,0.7412,1.0,"{'forest_fire_smoke_visible': {'accuracy': 0.7412, 'precision': 0.9689, 'recall': 0.4913, 'f1_score': 0.652}}"
+gemini-2.0-flash-lite,0.7152,0.7152,1.0,"{'forest_fire_smoke_visible': {'accuracy': 0.7152, 'precision': 0.9564, 'recall': 0.4421, 'f1_score': 0.6047}}"
+leon-se-ForestFireVLM-7B,0.7848,0.7848,1.0,"{'forest_fire_smoke_visible': {'accuracy': 0.7848, 'precision': 0.9836, 'recall': 0.5735, 'f1_score': 0.7245}}"
+Qwen-Qwen2.5-VL-7B-Instruct,0.6029,0.6029,1.0,"{'forest_fire_smoke_visible': {'accuracy': 0.6029, 'precision': 1.0, 'recall': 0.1952, 'f1_score': 0.3266}}"
+Qwen-Qwen2.5-VL-3B-Instruct,0.7037,0.7037,1.0,"{'forest_fire_smoke_visible': {'accuracy': 0.7037, 'precision': 0.9132, 'recall': 0.4414, 'f1_score': 0.5951}}"
+leon-se-ForestFireVLM-3B,0.7627,0.7627,1.0,"{'forest_fire_smoke_visible': {'accuracy': 0.7627, 'precision': 0.9875, 'recall': 0.5257, 'f1_score': 0.6861}}"
+gemini-1.5-pro,0.6998,0.6998,1.0,"{'forest_fire_smoke_visible': {'accuracy': 0.6998, 'precision': 1.0, 'recall': 0.3916, 'f1_score': 0.5628}}"

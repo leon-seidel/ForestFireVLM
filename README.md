@@ -39,7 +39,7 @@ The main evaluation script `run_eval.py` supports multiple VLM backends and eval
 python run_eval.py \
   --backend openai \
   --model_name gpt-4o \
-  --dataset_name leon-se/forestfire_vlm_v6_eval \
+  --dataset_name leon-se/ForestFireInsights-Eval \
   --results_folder benchmarks
 ```
 
@@ -49,8 +49,8 @@ python run_eval.py \
 python run_eval.py \
   --backend google \
   --model_name gemini-2.0-flash-lite \
-  --dataset_name leon-se/forestfire_vlm_v6_eval \
-  --results_folder benchmarks/gemini
+  --dataset_name leon-se/ForestFireInsights-Eval \
+  --results_folder benchmarks
 ```
 
 #### Using Self-hosted Models via vLLM
@@ -59,8 +59,8 @@ python run_eval.py \
 python run_eval.py \
   --backend vllm_online \
   --vllm_url http://localhost:8000/v1 \
-  --dataset_name leon-se/forestfire_vlm_v6_eval \
-  --results_folder benchmarks/llava
+  --dataset_name leon-se/ForestFireInsights-Eval \
+  --results_folder benchmarks
 ```
 
 ### Analyzing Single Images
@@ -94,11 +94,14 @@ python run_single_image.py \
 | `--backend` | VLM backend ("google", "openai", "vllm_online") | "vllm_online" |
 | `--vllm_url` | URL for vLLM | "http://localhost:8000/v1" |
 | `--model_name` | VLM model name | "gemini-2.0-flash-lite" |
-| `--dataset_name` | Dataset name on HuggingFace | "leon-se/forestfire_vlm_v6_eval" |
+| `--dataset_name` | Dataset name on HuggingFace | "leon-se/ForestFireInsights-Eval" |
 | `--ds_split` | Dataset split | "train" |
 | `--results_folder` | Folder to save results | "benchmarks" |
 | `--image` | Path to local image or image URL (for run_single_image.py) | None |
 
+
+## Batch evaluation
+The notebook `batch_evaluation.ipynb` allows batched evaluation for all backends with a custom number of workers and a preliminary JSONL file.
 
 ## Evaluation Output
 
@@ -107,6 +110,17 @@ The evaluation generates several outputs:
 - Pickle files with model outputs
 - Console output
 
+## Benchmark results
+All raw results and Pickle files can be found in the `benchmarks` folder. The predictions can be obtained from a pickle file with the following code:
+
+```py
+from evaluation.forestfire_evaluation import open_eval_file
+eval_file = 'benchmarks/leon-se-figlib-test/leon-se-ForestFireVLM-7B.pkl'
+model_name, dataset_name, results, predictions_text, ground_truth_dicts = open_eval_file(eval_file)
+```
+
+Disclaimer: We changed the names of both the models and datasets before publication. Some of the Pickle files therefore have a different `model_name` or `dataset_name` saved with them.
+
 ## Citation
 
 If you use this code in your research, please cite our paper:
@@ -114,7 +128,3 @@ If you use this code in your research, please cite our paper:
 ```
 [Citation will be added when the paper is published]
 ```
-
-## License
-
-[License information to be added]

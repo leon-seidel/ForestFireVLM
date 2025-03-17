@@ -24,7 +24,7 @@ def main():
     parser.add_argument('--backend', type=str, help='VLM backend', default="vllm_online")
     parser.add_argument('--vllm_url', type=str, help='URL for vLLM', default="http://localhost:8000/v1")
     parser.add_argument('--model_name', type=str, help='VLM model name', default="")
-    parser.add_argument('--dataset_name', type=str, help='Dataset name', default="leon-se/forestfire_vlm_v6_eval")
+    parser.add_argument('--dataset_name', type=str, help='Dataset name', default="leon-se/ForestFireInsights-Eval")
     parser.add_argument('--ds_split', type=str, help='Dataset split', default="train")
     parser.add_argument('--results_folder', type=str, help='Folder to save results', default="benchmarks")
 
