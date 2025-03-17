@@ -52,10 +52,6 @@ python run_eval.py \
 ```
 
 #### Using Self-hosted Models via vLLM
-```bash
-# Start a vLLM endpoint with the model of choice
-vllm serve leon-se/ForestFireVLM-7B --max-model-len 10000   
-```
 
 ```bash
 python run_eval.py \
@@ -100,6 +96,13 @@ python run_single_image.py \
 | `--ds_split` | Dataset split | "train" |
 | `--results_folder` | Folder to save results | "benchmarks" |
 | `--image` | Path to local image or image URL (for run_single_image.py) | None |
+
+### Running models with vLLM
+The corresponding evaluations were done with `vllm==0.7.3`. vLLM can be installed and launched with the following commands:
+```bash
+pip install vllm
+vllm serve leon-se/ForestFireVLM-7B --max-model-len 10000   
+```
 
 
 ## Batch evaluation
