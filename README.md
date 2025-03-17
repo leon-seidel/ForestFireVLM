@@ -6,8 +6,6 @@ ForestFireVLM is a framework for evaluating Vision Language Models (VLMs) on for
 
 *This section will be updated when the paper is published.*
 
-This code accompanies a research paper currently under peer review with MDPI. The paper explores the application of Vision Language Models for automated forest fire detection and analysis from aerial imagery.
-
 **Links:**
 - Paper: [Link to be added upon publication]
 - Models and Dataset Collection: [HuggingFace](https://huggingface.co/collections/leon-se/forestfirevlm-67d3429a77d9a5fc6c7ce9f5)
@@ -54,6 +52,10 @@ python run_eval.py \
 ```
 
 #### Using Self-hosted Models via vLLM
+```bash
+# Start a vLLM endpoint with the model of choice
+vllm serve leon-se/ForestFireVLM-7B --max-model-len 10000   
+```
 
 ```bash
 python run_eval.py \
